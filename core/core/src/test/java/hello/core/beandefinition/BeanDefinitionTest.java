@@ -1,6 +1,7 @@
 package hello.core.beandefinition;
 
 import hello.core.AppConfig;
+import hello.core.AutoAppConfig;
 import hello.core.Member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,13 +11,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.Map;
 
 public class BeanDefinitionTest {
-    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    //ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    ApplicationContext ac =new AnnotationConfigApplicationContext(AutoAppConfig.class);
+
 
 
     @Test
     void 싱글톤_테스트() {
-        MemberService memberService = ac.getBean("memberService", MemberService.class);
-        MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+        MemberService memberService = ac.getBean( MemberService.class);
+        MemberService memberService1 = ac.getBean( MemberService.class);
         Assertions.assertThat(memberService).isSameAs(memberService1);
 
     }
@@ -36,4 +39,5 @@ public class BeanDefinitionTest {
             System.out.println(beansOfType.get(s));
         }
     }
+
 }

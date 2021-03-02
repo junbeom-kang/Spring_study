@@ -1,11 +1,13 @@
 package hello.core.Member;
 
-public class MemberServiceImpl implements MemberService{
-    MemberRepository memberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-    public MemberServiceImpl(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+@Component
+@RequiredArgsConstructor
+public class MemberServiceImpl implements MemberService{
+    public final MemberRepository memberRepository;
 
     @Override
     public void join(Member member) {

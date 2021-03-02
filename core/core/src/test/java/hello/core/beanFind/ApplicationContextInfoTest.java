@@ -1,13 +1,15 @@
 package hello.core.beanFind;
 
 import hello.core.AppConfig;
+import hello.core.AutoAppConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ApplicationContextInfoTest {
-    AnnotationConfigApplicationContext ac=new AnnotationConfigApplicationContext(AppConfig.class);
+    //AnnotationConfigApplicationContext ac=new AnnotationConfigApplicationContext(AppConfig.class);
+    AnnotationConfigApplicationContext ac=new AnnotationConfigApplicationContext(AutoAppConfig.class);
 
     @Test
     @DisplayName("모든 빈 출력")
@@ -24,7 +26,7 @@ public class ApplicationContextInfoTest {
         for (String beanDefinitionName : beanDefinitionNames) {
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
             if (beanDefinition.getRole()==BeanDefinition.ROLE_APPLICATION){
-                System.out.println("ac.getBean(beanDefinitionName) = " + ac.getBean(beanDefinitionName));
+                System.out.println(beanDefinitionName+"  ac.getBean(beanDefinitionName) = " + ac.getBean(beanDefinitionName));
             }
 
         }
