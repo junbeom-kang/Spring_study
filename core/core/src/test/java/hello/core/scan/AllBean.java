@@ -22,11 +22,13 @@ public class AllBean {
     @Test
     void allBeanCheck(){
 
-        DiscountPolicy bean = ac.getBean(DiscountPolicy.class);
+        DiscountService discountService = ac.getBean(DiscountService.class);
         Member member=new Member(1L,"junbeom", Grade.VIP);
 
-        int discountPrice=bean.discount(member,10000,"fixDiscountPolicy");
+        int discountPrice=discountService.discount(member,10000,"fixDiscountPolicy");
         assertThat(discountPrice).isEqualTo(1000);
+        int discountPrice1=discountService.discount(member,20000,"rateDiscountPolicy");
+        assertThat(discountPrice1).isEqualTo(2000);
 
 
     }
