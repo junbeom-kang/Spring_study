@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {
+    @PersistenceContext
     private EntityManager em;
     //저장
     public void save(Member member) {
