@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepository {
     @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
     //저장
     public void save(Member member) {
         em.persist(member);
