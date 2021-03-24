@@ -2,6 +2,7 @@ package jpabook.jpashop.api;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,10 @@ public class MemberApiController {
 
     @PostMapping("/api/v1/members")
     public createMemberResponse saveMember(Member member) {
-        
+        createMemberResponse
+    }
+    @Data
+    static class createMemberResponse{
+        private Long id;
     }
 }
