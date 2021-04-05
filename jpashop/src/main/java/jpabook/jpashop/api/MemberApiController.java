@@ -14,7 +14,7 @@ public class MemberApiController {
     private final MemberService memberService;
 
     @PostMapping("/api/v1/members")// 엔티티를 바깥으로 들어내므로 안 좋은 방법임
-    public createMemberResponse saveMemberV1(Member member) {
+    public createMemberResponse saveMemberV1(@RequestBody @Valid Member member) {
         Long memberId = memberService.join(member);
         return new createMemberResponse(memberId);
     }
@@ -26,7 +26,7 @@ public class MemberApiController {
         return new createMemberResponse(memberId);
 
     }
-
+    /*
     @PutMapping("/api/v2/members/{id}")
     public UpdateMemberResponse updateMemberV2(
             @PathVariable Long id,
@@ -38,7 +38,7 @@ public class MemberApiController {
     @Data
     static class UpdateMemberResponse {
         public String
-    }
+    }*/
 
     @Data
     static class createMemberResponse{
