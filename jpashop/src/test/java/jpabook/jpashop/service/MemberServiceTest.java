@@ -3,7 +3,6 @@ package jpabook.jpashop.service;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.Fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest //두개가있어야 스프링부트를 올려서 테스트가능하다.
@@ -22,12 +20,13 @@ import static org.junit.Assert.*;
 public class MemberServiceTest {
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
+
     @Test
     @Rollback(value = false)
     public void 회원가입() throws Exception {
         //given
         Member member=new Member();
-        member.setName("준범");
+        member.setName("이름");
         //when
         Long memberId = memberService.join(member);
 
@@ -41,8 +40,8 @@ public class MemberServiceTest {
         //given
         Member member1 = new Member();
         Member member2 = new Member();
-        member1.setName("창훈");
-        member2.setName("창훈");
+        member1.setName("이름");
+        member2.setName("이름");
         //when
         memberService.join(member1);
         //then
