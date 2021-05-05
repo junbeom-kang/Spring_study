@@ -1,5 +1,7 @@
 package jpabook.jpashop.service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
@@ -40,6 +42,15 @@ public class OrderServiceTest {
         assertThat(getOrder.getTotalPrice()).isEqualTo(20000);
         assertThat(getOrder.getOrderItems().size()).isEqualTo(1);
         assertThat(book.getStockQuantity()).isEqualTo(8);
+
+    }
+    @Test
+    public void gson_테스트() throws Exception {
+        Member member=new Member();
+        member.setName("준범");
+        Gson gson=new GsonBuilder().create();
+        String s=gson.toJson(member);
+        System.out.println(s);
 
     }
 
