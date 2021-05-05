@@ -52,6 +52,10 @@ public class OrderServiceTest {
         String s=gson.toJson(member);
         System.out.println(s);
 
+        String JS="{'name'='창훈'}";
+        Member member1=gson.fromJson(JS,Member.class);
+        System.out.println(member1.getName());
+
     }
 
 
