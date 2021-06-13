@@ -4,11 +4,14 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
+@Getter
 @RequiredArgsConstructor
 @RestController
 public class MemberApiController {
@@ -26,6 +29,13 @@ public class MemberApiController {
         Long memberId = memberService.join(member);
         return new createMemberResponse(memberId);
 
+    }
+    @GetMapping("/api/v2/members")
+    public List<Member> allMembers() {
+        Member member=new Member();
+        member.setName("준범");
+        memberService.join(member);
+        return memberService.findMembers();
     }
 
     @PutMapping("/api/v2/members/{id}")

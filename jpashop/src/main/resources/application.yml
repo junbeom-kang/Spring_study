@@ -7,6 +7,7 @@ spring:
     #이렇게하면 히카리가 커넥션풀같은걸 다 해줌
   jpa:
     hibernate:
+      dialect: org.hibernate.dialect.MariaDB103Dialect
       ddl-auto: create #자동으로 테이블 만들어주는 모드, 실행시점에 가지고있는 테이블을 지우고 다시생성
     properties:
       hibernate:
