@@ -5,7 +5,8 @@ import hello.core.Member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FixDiscountPolicy implements DiscountPolicy {
+public class FixDiscountPolicy implements
+        DiscountPolicy {
     private int discountFixAmount= 1000;
     @Override
     public int discount(Member member, int price) {
